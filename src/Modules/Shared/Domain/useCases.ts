@@ -1,4 +1,4 @@
-export interface UseCases<T,R>{
+export interface UseCaseWithParams<T,R>{
     run(params: T): R
 }
 
