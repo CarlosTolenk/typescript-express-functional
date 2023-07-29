@@ -1,9 +1,9 @@
 import {Router} from "express";
-import {helloHandler, rootHandler} from "../handlers";
 
-const router = Router()
+// Modules
+import LifeProofRouter from '../Modules/LifeProof/Infrastructure/Http'
 
-router.get('/', rootHandler);
-router.get('/hello/:name', helloHandler);
+const baseRouter = Router()
+baseRouter.use('/', LifeProofRouter)
 
-export default router;
+export default baseRouter;
