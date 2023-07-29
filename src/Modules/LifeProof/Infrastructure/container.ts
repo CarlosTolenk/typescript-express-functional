@@ -6,8 +6,8 @@ import {LivenessController} from "./Http/Controllers/livenessController";
 import {HealthRepositoryInMemory} from "./Persistence/healthRepositoryInMemory";
 
 // UseCase
-import {HealthUseCase} from "../Application/health.useCase";
-import {LivenessUseCase} from "../Application/liveness.useCase";
+import {HealthUseCase} from "../Application/healthUseCase";
+import {LivenessUseCase} from "../Application/livenessUseCase";
 
 // Instance Repository
 const repositoryInMemory = HealthRepositoryInMemory()
