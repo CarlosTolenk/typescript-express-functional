@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {LivenessUseCase} from "../../../Application/liveness.useCase";
+import {LivenessUseCase} from "../../../Application/livenessUseCase";
 
 type LivenessControllerProps = {
     useCase: LivenessUseCase

@@ -1,5 +1,6 @@
 import {Request, Response} from "express";
-import {HealthUseCase} from "../../../Application/health.useCase";
+import {HealthUseCase} from "../../../Application/healthUseCase";
+
 
 type HealthControllerProps = {
     useCase: HealthUseCase
