@@ -1,6 +1,6 @@
 import {HealthRepository} from "../../Domain/healthRepository";
 
-export const healthRepositoryInMemory = (): HealthRepository => {
+export const HealthRepositoryInMemory = (): HealthRepository => {
     const find = async () => {
         return {status: 'OK'}
     }
