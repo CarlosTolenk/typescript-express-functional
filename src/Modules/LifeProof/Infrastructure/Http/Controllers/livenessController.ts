@@ -6,6 +6,12 @@ type LivenessControllerProps = {
 }
 
 export const LivenessController = ({useCase}: LivenessControllerProps) => async (req: Request, res: Response) => {
-    const response = await useCase.run()
-    return res.json(response);
+    try {
+        const response = await useCase.run()
+        return res.json(response);
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json(error.message);
+    }
+
 };

@@ -12,5 +12,6 @@ export const HealthController = ({useCase}: HealthControllerProps) => async (req
         return res.json(response);
     } catch (error) {
         console.error(error)
+        return res.status(500).json(error.message);
     }
 };
