@@ -1,4 +1,6 @@
 import {Request, Response} from "express";
+import {StatusCodes} from "http-status-codes";
+
 import {LivenessUseCase} from "../../../Application/livenessUseCase";
 
 type LivenessControllerProps = {
@@ -11,7 +13,7 @@ export const LivenessController = ({useCase}: LivenessControllerProps) => async 
         return res.json(response);
     } catch (error) {
         console.error(error)
-        return res.status(500).json(error.message);
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
     }
 
 };

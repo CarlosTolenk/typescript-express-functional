@@ -1,4 +1,6 @@
 import {Request, Response} from "express";
+import {StatusCodes} from 'http-status-codes';
+
 import {HealthUseCase} from "../../../Application/healthUseCase";
 
 
@@ -12,6 +14,6 @@ export const HealthController = ({useCase}: HealthControllerProps) => async (req
         return res.json(response);
     } catch (error) {
         console.error(error)
-        return res.status(500).json(error.message);
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
     }
 };
