@@ -1,6 +1,6 @@
 import {UseCase} from "../../Shared/Domain/useCases";
 
-export interface LivenessUseCase extends UseCase<Promise<string>> {
+export interface LivenessUseCase extends UseCase<string> {
 }
 
 export const LivenessUseCase = (): LivenessUseCase => {

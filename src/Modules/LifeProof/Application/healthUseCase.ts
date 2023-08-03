@@ -6,7 +6,7 @@ interface IHealthUseCase {
     repository: HealthRepository
 }
 
-export interface HealthUseCase extends UseCase<Promise<Health>> {
+export interface HealthUseCase extends UseCase<Health> {
 }
 
 export const HealthUseCase = ({repository}: IHealthUseCase): HealthUseCase => {
