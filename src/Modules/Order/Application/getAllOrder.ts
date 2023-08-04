@@ -1,16 +1,26 @@
 import {UseCase} from "../../Shared/Domain/useCases";
 import {Order} from "../Domain/order";
 import {OrderRepository} from "../Domain/orderRepository";
+import {ILogger} from "../../Shared/Domain/logger";
 
-interface IGetAllOrderUseCase  {
-    repository: OrderRepository
+interface IGetAllOrderUseCase {
+    repository: OrderRepository,
+    logger: ILogger
 }
+
 export interface GetAllOrder extends UseCase<Order[]> {
 }
 
-export const GetAllOrderUseCase = ({repository}: IGetAllOrderUseCase): GetAllOrder => {
+export const GetAllOrderUseCase = ({repository, logger}: IGetAllOrderUseCase): GetAllOrder => {
     const run = (): Promise<Order[]> => {
-        return repository.findAll();
+        try {
+            logger.info('Try GetAllOrderUseCase')
+            return repository.findAll();
+        } catch (error) {
+            logger.error('Error when GetAllOrderUseCase')
+            throw error;
+        }
+
     }
 
     return {

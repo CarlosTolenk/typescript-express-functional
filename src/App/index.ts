@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import compression from "compression";
 
 import routerIndex from './router'
+import Logger from "../Modules/Shared/Infrastructure/Logger";
 
 const app: Express = express()
 app.use(helmet());
@@ -20,8 +21,8 @@ app.use(basePath, routerIndex)
 
 
 const onHandlerError = (error: Error) => {
-    console.error((new Date).toUTCString(), error.message)
-    console.error(error.stack)
+    Logger().error(`${(new Date).toUTCString()} ${error.message}`)
+    Logger().error(error.stack)
     setTimeout(() => {
         process.exit(1)
     }, 200)

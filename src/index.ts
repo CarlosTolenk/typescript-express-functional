@@ -1,5 +1,6 @@
 import application from './App'
-import {connectToDatabase} from "./Modules/Shared/Infrastructure/typeormconfig";
+import {connectToDatabase} from "./Modules/Shared/Infrastructure/Persistence/typeormconfig";
+import Logger from "./Modules/Shared/Infrastructure/Logger";
 
 const port = process.env.PORT || '3000';
 
@@ -8,10 +9,10 @@ const port = process.env.PORT || '3000';
         await connectToDatabase();
 
         application.listen(port, () => {
-            console.log(`Server is listening on ${port}`);
+            Logger().info(`Server is listening on ${port}`)
         });
     } catch (error) {
-        console.error("Error starting the application:", error);
+        Logger().error(`Error starting the application: ${JSON.stringify(error)}`);
     }
 
 })();

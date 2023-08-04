@@ -12,11 +12,15 @@ import {LivenessController} from "./Http/Controllers/livenessController";
 // Infrastructure Persistence
 import {HealthRepositoryInMemory} from "./Persistence/healthRepositoryInMemory";
 
+// Infrastructure Logger
+import Logger from "../../Shared/Infrastructure/Logger";
+
 // Instance Repository
-const repositoryInMemory: HealthRepository = HealthRepositoryInMemory()
+const repositoryInMemory: HealthRepository = HealthRepositoryInMemory();
+const logger = Logger()
 
 // Instances useCases
-const healthUseCase = HealthProof({repository: repositoryInMemory})
+const healthUseCase = HealthProof({repository: repositoryInMemory, logger: logger})
 const useCaseLiveness = LivenessProof()
 
 const ContainerHealthController = HealthController({
