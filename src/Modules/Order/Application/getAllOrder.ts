@@ -1,11 +1,16 @@
-import {UseCaseWithParams} from "../../Shared/Domain/useCases";
+import {UseCase} from "../../Shared/Domain/useCases";
+import {Order} from "../Domain/order";
+import {OrderRepository} from "../Domain/orderRepository";
 
-export interface GetAllOrder extends UseCaseWithParams<any, void> {
+interface IGetAllOrderUseCase  {
+    repository: OrderRepository
+}
+export interface GetAllOrder extends UseCase<Order[]> {
 }
 
-export const GetAllOrderUseCase = (): GetAllOrder => {
-    const run = (): Promise<void> => {
-        return Promise.resolve();
+export const GetAllOrderUseCase = ({repository}: IGetAllOrderUseCase): GetAllOrder => {
+    const run = (): Promise<Order[]> => {
+        return repository.findAll();
     }
 
     return {
