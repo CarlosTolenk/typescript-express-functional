@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import {StatusCodes} from "http-status-codes";
 
-import {LivenessUseCase} from "../../../Application/livenessUseCase";
+import {LivenessUseCase} from "../../../Application/livenessProof";
 
 type LivenessControllerProps = {
     useCase: LivenessUseCase

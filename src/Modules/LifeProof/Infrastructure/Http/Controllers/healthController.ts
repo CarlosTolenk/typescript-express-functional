@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import {StatusCodes} from 'http-status-codes';
 
-import {HealthUseCase} from "../../../Application/healthUseCase";
+import {HealthUseCase} from "../../../Application/healthProof";
 
 
 type HealthControllerProps = {

@@ -2,8 +2,8 @@
 import {HealthRepository} from "../Domain/healthRepository";
 
 // Application UseCase
-import {HealthUseCase} from "../Application/healthUseCase";
-import {LivenessUseCase} from "../Application/livenessUseCase";
+import {HealthProof} from "../Application/healthProof";
+import {LivenessProof} from "../Application/livenessProof";
 
 // Infrastructure Controllers
 import {HealthController} from "./Http/Controllers/healthController";
@@ -16,8 +16,8 @@ import {HealthRepositoryInMemory} from "./Persistence/healthRepositoryInMemory";
 const repositoryInMemory: HealthRepository = HealthRepositoryInMemory()
 
 // Instances useCases
-const healthUseCase = HealthUseCase({repository: repositoryInMemory})
-const useCaseLiveness = LivenessUseCase()
+const healthUseCase = HealthProof({repository: repositoryInMemory})
+const useCaseLiveness = LivenessProof()
 
 const ContainerHealthController = HealthController({
     useCase: healthUseCase

@@ -9,7 +9,7 @@ interface IHealthUseCase {
 export interface HealthUseCase extends UseCase<Health> {
 }
 
-export const HealthUseCase = ({repository}: IHealthUseCase): HealthUseCase => {
+export const HealthProof = ({repository}: IHealthUseCase): HealthUseCase => {
 
     const run = async (): Promise<Health> => {
         return await repository.find()
