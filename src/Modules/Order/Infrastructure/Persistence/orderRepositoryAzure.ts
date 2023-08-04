@@ -1,7 +1,10 @@
+import {getRepository} from "typeorm";
+// Domain
 import {OrderRepository} from "../../Domain/orderRepository";
 import {Order} from "../../Domain/order";
-import {getRepository} from "typeorm";
-import {Orders} from "./order.entity";
+
+// Infrastructure
+import {OrdersEntity} from "./order.entity";
 
 export const OrderRepositoryAzure = (): OrderRepository => {
 
@@ -10,9 +13,16 @@ export const OrderRepositoryAzure = (): OrderRepository => {
     }
 
     const findAll = async (): Promise<Order[]> => {
-        const order = getRepository(Orders)
-        const orderBD = await order.find()
-        return Promise.resolve(orderBD);
+        const ordersRepository = getRepository(OrdersEntity)
+        const orders = await ordersRepository.find();
+        return orders.map((entity) => mapperEntityToDomain(entity))
+    }
+
+
+    const mapperEntityToDomain = (entity: OrdersEntity): Order => {
+        return {
+            id: entity.id, amount: entity.amount, description: entity.description,
+        }
     }
 
     return {
